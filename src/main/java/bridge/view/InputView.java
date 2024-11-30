@@ -1,15 +1,22 @@
-package bridge;
+package bridge.view;
+
+import bridge.domain.constant.LengthCommand;
+import bridge.utils.Parser;
+import java.util.Scanner;
 
 /**
  * 사용자로부터 입력을 받는 역할을 한다.
  */
 public class InputView {
+    private final static Scanner scanner = new Scanner(System.in);
+    private final static String INPUT_BRIDGE_LENGTH = "다리의 길이를 입력해주세요.";
 
     /**
      * 다리의 길이를 입력받는다.
      */
     public int readBridgeSize() {
-        return 0;
+        System.out.println(INPUT_BRIDGE_LENGTH);
+        return LengthCommand.from(Parser.toNumber(readConsole()));
     }
 
     /**
@@ -24,5 +31,9 @@ public class InputView {
      */
     public String readGameCommand() {
         return null;
+    }
+
+    private String readConsole() {
+        return scanner.nextLine();
     }
 }
